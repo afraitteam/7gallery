@@ -38,7 +38,8 @@ class CategoriesController extends Controller
 
     public function all()
     {
-        $categories = Category::all();
+        $categories = Category::paginate(10);
+        // dd($categories);
 
         return view('admin.categories.all', compact('categories'));
     }

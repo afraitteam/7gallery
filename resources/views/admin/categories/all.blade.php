@@ -60,13 +60,11 @@
                                                 <td>{{ $category->id }}</td>
                                                 <td>{{ $category->slug }}</td>
                                                 <td>{{ $category->title }}</td>
-                                                <td>{{ $category->title }}</td>
-                                                <td>۲۵ مرداد ۱۴۰۰</td>
-                                                <td><a href="#" class="btn btn-default btn-icons"><i
-                                                            class="fa fa-edit"></i></a><a href="#"
-                                                        class="btn btn-default btn-icons">
-                                                        <iclass="fa fa-trash"></i>
-                                                    </a></td>
+                                                <td>{{ $category->created_at }}</td>
+                                                <td>
+                                                    <a href="#" class="btn btn-default btn-icons"><i class="fa fa-edit"></i></a>
+                                                    <a href="#" class="btn btn-default btn-icons"><i class="fa fa-trash"></i></a>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -76,13 +74,8 @@
                         </div>
                         <!-- /.card -->
                         <div class="d-flex justify-content-center">
-                            <ul class="pagination mt-3">
-                                <li class="page-item"><a class="page-link" href="#">«</a></li>
-                                <li class="page-item"><a class="page-link" href="#">۱</a></li>
-                                <li class="page-item"><a class="page-link" href="#">۲</a></li>
-                                <li class="page-item"><a class="page-link" href="#">۳</a></li>
-                                <li class="page-item"><a class="page-link" href="#">»</a></li>
-                            </ul>
+
+                            {{ $categories->links() }}
                         </div>
                     </div>
                 </div>
