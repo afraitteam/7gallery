@@ -12,7 +12,7 @@
                         <h1 class="m-0 text-dark">
                             <a class="nav-link drawer" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
                             دسته بندی ها / افزودن
-                            <a class="btn btn-primary float-left text-white py-2 px-4" href="category.php">بازگشت به صفحه
+                            <a class="btn btn-primary float-left text-white py-2 px-4" href="{{ Route('admin.categories.all') }}">بازگشت به صفحه
                                 دسته بندی ها</a>
                         </h1>
                     </div><!-- /.col -->
@@ -26,7 +26,7 @@
             <div class="container-fluid">
 
                 @include('errors.message')
-                
+
                 <div class="row mt-5">
                     <div class="col-md-12">
                         <div class="card card-defualt">
