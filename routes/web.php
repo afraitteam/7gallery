@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoriesController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
@@ -14,17 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('products/all', function () {
-    return view('frontend.products.all');
-});
 
+// ADMIM
 
-Route::get('/admin/index', function () {
-    return view('admin.index');
-});
+Route::prefix('admin')->group(function () {
 
-
-Route::get('/admin/users/', function () {
-    return view('admin.users.index');
+    Route::prefix('categories')->group(function () {
+        Route::get('create', [CategoriesController::class, 'create']);
+        Route::post('', [CategoriesController::class, 'store'])->name('admin.categories.store');
+    });
 
 });
