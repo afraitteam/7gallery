@@ -67,7 +67,13 @@ class ProductsController extends Controller
             return back()->with('failed', $ex->getMessage());
         }
 
+    }
 
 
+    public function all()
+    {
+        $products = Product::paginate(10);
+
+        return view('admin.products.all', compact('products'));
     }
 }

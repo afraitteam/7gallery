@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
@@ -11,8 +12,13 @@ class Product extends Model
 
     public $guarded = [];
 
-    public function getFilePath()
+    public function Category()
     {
-        return 'products';
+        return $this->belongsTo(Category::class);
+    }
+
+    public function owner()
+    {
+        return $this->belongsTo(User::class);
     }
 }

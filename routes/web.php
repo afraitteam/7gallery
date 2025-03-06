@@ -46,6 +46,7 @@ Route::prefix('admin')->group(function () {
     Route::prefix('products')->group(function () {
 
         // Show All
+        Route::get('', [ProductsController::class, 'all'])->name('admin.products.all');
 
         // Create
         Route::get('create', [ProductsController::class, 'create'])->name('admin.products.create');
