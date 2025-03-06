@@ -62,10 +62,11 @@
                                         @foreach ($products as $product)
                                             <tr>
                                                 <td>{{ $product->id }}</td>
-                                                <td><img src="dist/img/user6-128x128.jpg" class="product_img">{{ $product->title}}</td>
-                                                <td>{{ $product->category->title}}</td>
-                                                <td>{{ $product->owner->name}}</td>
-                                                <td>{!! substr($product->description,0,20) !!} </td>
+                                                <td><img src="dist/img/user6-128x128.jpg"
+                                                        class="product_img">{{ $product->title }}</td>
+                                                <td>{{ $product->category->title }}</td>
+                                                <td>{{ $product->owner->name }}</td>
+                                                <td>{!! substr($product->description, 0, 20) !!} </td>
                                                 <td>
                                                     <a href="#" class="btn btn-default btn-icons" title="لینک دمو"><i
                                                             class="fa fa-link"></i></a>
@@ -74,8 +75,8 @@
                                                     <a href="#" class="btn btn-default btn-icons"
                                                         title="لینک دانلود"><i class="fa fa-link"></i></a>
                                                 </td>
-                                                <td>{{ number_format($product->price)}} تومان</td>
-                                                <td> {{ $product->created_at}}</td>
+                                                <td>{{ number_format($product->price) }} تومان</td>
+                                                <td> {{ $product->created_at }}</td>
                                                 <td>
                                                     <a href="#" class="btn btn-default btn-icons"><i
                                                             class="fa fa-edit"></i></a>
@@ -92,7 +93,7 @@
                         </div>
                         <!-- /.card -->
                         <div class="d-flex justify-content-center">
-                            {{ $products->links()}}
+                            {{ $products->links() }}
                         </div>
                     </div>
                 </div>
