@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoriesController;
-use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,12 +20,20 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('admin')->group(function () {
 
     Route::prefix('categories')->group(function () {
+
+        // Show All
         Route::get('', [CategoriesController::class, 'all'])->name('admin.categories.all');
 
+        // Create
         Route::get('create', [CategoriesController::class, 'create'])->name('admin.categories.create');
         Route::post('', [CategoriesController::class, 'store'])->name('admin.categories.store');
 
+        // Delete
+        Route::delete('{category_id}/delete', [CategoriesController::class, 'delete'])->name('admin.categories.delete');
 
+        // Update
+        Route::get('{category_id}/edit', [CategoriesController::class, 'edit'])->name('admin.categories.edit');
+        Route::put('{category_id}/update', [CategoriesController::class, 'update'])->name('admin.categories.update');
     });
 
 });
