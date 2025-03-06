@@ -15,16 +15,16 @@ return new class extends Migration
             $table->id();
             $table->char('title');
             $table->text('description');
-            $table->char('thumbnail_url');
-            $table->char('demo_url');
-            $table->char('source_url') ;
+            $table->char('thumbnail_url')->nullable() ;
+            $table->char('demo_url')->nullable() ;
+            $table->char('source_url')->nullable() ;
             $table->unsignedBigInteger('price');
 
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
 
-            $table->unsignedBigInteger('order_id');
-            $table->foreign('order_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('owner_id');
+            $table->foreign('owner_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
         });
