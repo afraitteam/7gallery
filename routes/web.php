@@ -55,10 +55,14 @@ Route::prefix('admin')->group(function () {
         // Delete Product
         Route::delete('{product_id}/delete', [ProductsController::class, 'delete'])->name('admin.products.delete');
 
+        // Edit 
+        Route::get('{product_id}/edit', [ProductsController::class, 'edit'])->name(name: 'admin.products.edit');
+        Route::put('{product_id}/update', [ProductsController::class, 'update'])->name('admin.products.update');
 
         // Download File
         Route::get('{product_id}/download/demo', [ProductsController::class, 'downloadDemo'])->name('admin.products.download.demo');
         Route::get('{product_id}/download/soruce', [ProductsController::class, 'downloadSource'])->name('admin.products.download.source');
+
 
 
     });
