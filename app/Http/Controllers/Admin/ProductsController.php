@@ -40,12 +40,12 @@ class ProductsController extends Controller
                 'demo_url' => $ValidatedData['demo_url'],
             ];
 
-            $basePath = 'products/' . $createdProduct->id . '/';
+            $basePath = '/products/' . $createdProduct->id . '/';
             $imagesPath = ImageUploader::uploadMany($images, $basePath);
 
 
             $sourceImageFullPath = $basePath . 'soruce_url_' . $ValidatedData['source_url']->getClientOriginalName();
-            ImageUploader::upload($ValidatedData['source_url'], $sourceImageFullPath);
+            ImageUploader::upload($ValidatedData['source_url'], $sourceImageFullPath, 'local_storage');
 
 
             $uploadedImage = $createdProduct->update(
@@ -76,4 +76,33 @@ class ProductsController extends Controller
 
         return view('admin.products.all', compact('products'));
     }
+
+
+    public function downloadDemo($productId)
+    {
+        $product = Product::findOrFail($productId);
+
+        $filePath = public_path($product->demo_url);
+
+        if (!file_exists($filePath)) {
+            abort(404, 'فایل مورد نظر پیدا نشد');
+        }
+
+        return response()->download($filePath);
+    }
+
+    public function downloadSource($productId)
+    {
+        $product = Product::findOrFail($productId);
+
+        $filePath = storage_path('app/local_storage/' . $product->source_url);
+
+        if (!file_exists($filePath)) {
+            abort(404, 'فایل مورد نظر پیدا نشد');
+        }
+
+        return response()->download($filePath);
+    }
+
+
 }

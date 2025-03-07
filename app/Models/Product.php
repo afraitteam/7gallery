@@ -11,11 +11,13 @@ class Product extends Model
     use HasFactory;
 
     public $guarded = [];
+    protected $with = ['category'];
 
-    public function Category()
+    public function category()
     {
         return $this->belongsTo(Category::class);
     }
+
 
     public function owner()
     {

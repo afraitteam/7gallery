@@ -51,6 +51,9 @@ Route::prefix('admin')->group(function () {
         // Create
         Route::get('create', [ProductsController::class, 'create'])->name('admin.products.create');
         Route::post('', [ProductsController::class, 'store'])->name('admin.products.store');
+
+        Route::get('{product_id}/download/demo', [ProductsController::class, 'downloadDemo'])->name('admin.products.download.demo');
+        Route::get('{product_id}/download/soruce', [ProductsController::class, 'downloadSource'])->name('admin.products.download.source');
     });
 
 });
