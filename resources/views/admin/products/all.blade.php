@@ -25,6 +25,7 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
+                    @include('errors.message')
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
@@ -78,10 +79,16 @@
                                                 <td>{{ number_format($product->price) }} تومان</td>
                                                 <td> {{ $product->created_at }}</td>
                                                 <td>
-                                                    <a href="#" class="btn btn-default btn-icons"><i
-                                                            class="fa fa-edit"></i></a>
-                                                    <a href="#" class="btn btn-default btn-icons"><i
-                                                            class="fa fa-trash"></i></a>
+                                                    <a href="#" class="btn btn-default btn-icons"><i class="fa fa-edit"></i></a>
+                                                    
+                                                    <form action="{{Route('admin.products.delete',$product->id)}}" method="post">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button class="btn btn-default btn-icons" style="display: inline" > <i class="fa fa-trash"></i> </button>
+
+                                                    </form>
+
+                                                    <a href="{{Route('admin.products.delete',$product->id)}}" class=""></a>
                                                 </td>
                                             </tr>
                                         @endforeach

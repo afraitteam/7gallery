@@ -104,5 +104,10 @@ class ProductsController extends Controller
         return response()->download($filePath);
     }
 
+    public function delete($productId){
+        $product = Product::findOrFail($productId);
+        $product->delete();
+        return back()->with('success','محصول با موفقیت حذف شد');
+    }
 
 }
