@@ -44,27 +44,35 @@
                                 <table class="table table-hover mb-0">
                                     <tbody>
                                         <tr>
-                                            <th>مشاهده سفارش</th>
-                                            <th>تاریخ</th>
                                             <th>کاربر</th>
                                             <th>مبلغ</th>
                                             <th>کد رهگیری</th>
                                             <th>وضعیت</th>
+                                            <th>تاریخ</th>
+                                            <th>مشاهده سفارش</th>
                                         </tr>
-                                        <tr>
-                                            <td>میلاد بسحاق</td>
-                                            <td>۲۳۰۰۰ تومان</td>
-                                            <td>۵۸۸۴۸۳۹۹۹۰۲</td>
-                                            <td>
-                                                <span class="badge bg-success">موفق</span>
-                                            </td>
-                                            <td>۲۵ مرداد ۱۴۰۰</td>
-                                            <td>
-                                                <button class="btn btn-default btn-icons" data-toggle="modal"
-                                                    data-target="#order_items" title="مشاهده سبد خرید"><i
-                                                        class="fa fa-shopping-cart"></i></button>
-                                            </td>
-                                        </tr>
+                                        @foreach ($orders as $order)
+                                            <tr>
+                                                <td>{{ $order->user->name }}</td>
+                                                <td>{{ number_format($order->amount) }} تومان</td>
+                                                <td>{{ $order->ref_code }}</td>
+                                                <td>
+                                                    @if ($order->status == 'pending')
+                                                        <span class="badge bg-warning">درحال پرداخت</span>
+                                                    @elseif ($order->status == 'paid')
+                                                        <span class="badge bg-success">پرداخت شده</span>
+                                                    @elseif ($order->status == 'unpaid')
+                                                        <span class="badge bg-danger">پرداخت ناموفق</span>
+                                                    @endif
+                                                </td>
+                                                <td>{{ $order->created_at }}</td>
+                                                <td>
+                                                    <button class="btn btn-default btn-icons" data-toggle="modal"
+                                                        data-target="#order_items" title="مشاهده سبد خرید"><i
+                                                            class="fa fa-shopping-cart"></i></button>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -72,13 +80,7 @@
                         </div>
                         <!-- /.card -->
                         <div class="d-flex justify-content-center">
-                            <ul class="pagination mt-3">
-                                <li class="page-item"><a class="page-link" href="#">«</a></li>
-                                <li class="page-item"><a class="page-link" href="#">۱</a></li>
-                                <li class="page-item"><a class="page-link" href="#">۲</a></li>
-                                <li class="page-item"><a class="page-link" href="#">۳</a></li>
-                                <li class="page-item"><a class="page-link" href="#">»</a></li>
-                            </ul>
+                            {{ $orders->links() }}
                         </div>
                     </div>
                 </div>

@@ -18,12 +18,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-route::get('test', function () {
-    dd(bcrypt('test'));
+Route::get('', function () {
+    return view('frontend.products.all');
 });
-
-
-// ADMIM
 
 Route::prefix('admin')->group(function () {
 
@@ -82,11 +79,11 @@ Route::prefix('admin')->group(function () {
     Route::prefix('orders')->group(function () {
 
         Route::get('all', [OrdersController::class, 'all'])->name('admin.orders.all');
-        // Route::get('create', [OrdersController::class, 'create'])->name('admin.orders.create');
-        // Route::post('', [OrdersController::class, 'store'])->name('admin.orders.store');
-        // Route::delete('{user_id}/delete', [OrdersController::class, 'delete'])->name('admin.orders.delete');
-        // Route::get('{user_id}/edit', [UsersController::class, 'edit'])->name('admin.users.edit');
-        // Route::put('{user_id}/update', [UsersController::class, 'update'])->name('admin.users.update');
+        Route::get('create', [OrdersController::class, 'create'])->name('admin.orders.create');
+        Route::post('', [OrdersController::class, 'store'])->name('admin.orders.store');
+        Route::delete('{order_id}/delete', [OrdersController::class, 'delete'])->name('admin.orders.delete');
+        Route::get('{order_id}/edit', [OrdersController::class, 'edit'])->name('admin.orders.edit');
+        Route::put('{order_id}/update', [OrdersController::class, 'update'])->name('admin.orders.update');
 
     });
 
