@@ -9,8 +9,6 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
 use App\Utilities\ImageUploader;
-use PhpParser\Node\Expr\Throw_;
-use function PHPUnit\Framework\returnValueMap;
 
 class ProductsController extends Controller
 {

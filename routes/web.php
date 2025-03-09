@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\Admin\ProductsController;
+use App\Http\Controllers\Admin\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -63,8 +65,30 @@ Route::prefix('admin')->group(function () {
         Route::get('{product_id}/download/demo', [ProductsController::class, 'downloadDemo'])->name('admin.products.download.demo');
         Route::get('{product_id}/download/soruce', [ProductsController::class, 'downloadSource'])->name('admin.products.download.source');
 
+    });
 
+    Route::prefix('users')->group(function () {
+
+        Route::get('all', [UsersController::class, 'all'])->name('admin.users.all');
+        Route::get('create', [UsersController::class, 'create'])->name('admin.users.create');
+        Route::post('', [UsersController::class, 'store'])->name('admin.users.store');
+        Route::delete('{user_id}/delete', [UsersController::class, 'delete'])->name('admin.users.delete');
+        Route::get('{user_id}/edit', [UsersController::class, 'edit'])->name('admin.users.edit');
+        Route::put('{user_id}/update', [UsersController::class, 'update'])->name('admin.users.update');
 
     });
+
+
+    Route::prefix('orders')->group(function () {
+
+        Route::get('all', [OrdersController::class, 'all'])->name('admin.orders.all');
+        // Route::get('create', [OrdersController::class, 'create'])->name('admin.orders.create');
+        // Route::post('', [OrdersController::class, 'store'])->name('admin.orders.store');
+        // Route::delete('{user_id}/delete', [OrdersController::class, 'delete'])->name('admin.orders.delete');
+        // Route::get('{user_id}/edit', [UsersController::class, 'edit'])->name('admin.users.edit');
+        // Route::put('{user_id}/update', [UsersController::class, 'update'])->name('admin.users.update');
+
+    });
+
 
 });
