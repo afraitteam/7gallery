@@ -24,7 +24,10 @@
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
+                @include('errors.message')
                 <div class="row">
+
+
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
@@ -51,26 +54,29 @@
                                             <th>نام و نام خانوادگی</th>
                                             <th>ایمیل</th>
                                             <th>موبایل</th>
-                                            <th>نقش کاربری</th>g
+                                            <th>نقش کاربری</th>
                                             <th>تاریخ عضویت</th>
                                             <th>عملیات</th>
                                         </tr>
                                         @foreach ($users as $user)
-                                        {{-- {{dd($user)}} --}}
+                                            {{-- {{dd($user)}} --}}
                                             <tr>
                                                 <td>{{ $user->id }}</td>
                                                 <td>{{ $user->name }}</td>
                                                 <td>{{ $user->email }}</td>
                                                 <td>{{ $user->mobile }}</td>
-                                                <td>{{ $user->role == 'admin' ? 'ادمین' : 'کاربر عادی'}}</td>
+                                                <td>{{ $user->role == 'admin' ? 'ادمین' : 'کاربر عادی' }}</td>
                                                 <td>{{ $user->created_at }}</td>
                                                 <td>
-                                                    <a href="{{ Route('admin.users.edit', $user->id) }}" class="btn btn-default btn-icons"><i class="fa fa-edit"></i></a>
+                                                    <a href="{{ Route('admin.users.edit', $user->id) }}"
+                                                        class="btn btn-default btn-icons"><i class="fa fa-edit"></i></a>
 
-                                                    <form action="{{ Route('admin.users.delete', $user->id) }}" method="post">
+                                                    <form action="{{ Route('admin.users.delete', $user->id) }}"
+                                                        method="post">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button class="btn btn-default btn-icons" style="display: inline"><i class="fa fa-trash"></i></button>
+                                                        <button class="btn btn-default btn-icons" style="display: inline"><i
+                                                                class="fa fa-trash"></i></button>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -83,7 +89,7 @@
                         </div>
                         <!-- /.card -->
                         <div class="d-flex justify-content-center">
-                        {{ $users->links()}}
+                            {{ $users->links() }}
                         </div>
                     </div>
                 </div>

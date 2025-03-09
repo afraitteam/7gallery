@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -76,5 +77,18 @@ Route::prefix('admin')->group(function () {
         Route::put('{user_id}/update', [UsersController::class, 'update'])->name('admin.users.update');
 
     });
+
+
+    Route::prefix('orders')->group(function () {
+
+        Route::get('all', [OrdersController::class, 'all'])->name('admin.orders.all');
+        // Route::get('create', [OrdersController::class, 'create'])->name('admin.orders.create');
+        // Route::post('', [OrdersController::class, 'store'])->name('admin.orders.store');
+        // Route::delete('{user_id}/delete', [OrdersController::class, 'delete'])->name('admin.orders.delete');
+        // Route::get('{user_id}/edit', [UsersController::class, 'edit'])->name('admin.users.edit');
+        // Route::put('{user_id}/update', [UsersController::class, 'update'])->name('admin.users.update');
+
+    });
+
 
 });
